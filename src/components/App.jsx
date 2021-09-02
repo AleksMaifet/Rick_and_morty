@@ -1,14 +1,14 @@
 import Header from "./Header";
 import ContentList from "./ContentList";
-import { useFetchContent } from "../hooks/useFetchContent";
+import { useLoadContent } from "../hooks/useLoadContent";
 import "./App.css";
 
 const App = () => {
-  const [fetch, content] = useFetchContent();
+  const [content, getContent] = useLoadContent();
 
   return (
     <div className="App">
-      <Header onSearch={fetch} />
+      <Header onSearch={getContent} />
       <h1>Simple content list</h1>
       <ContentList content={content} />
       {/* TODO: Put FetchMoreButton component here */}

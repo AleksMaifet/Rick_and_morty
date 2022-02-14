@@ -2,10 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: sticky;
+  top: 0;
   padding: 3rem;
   border-radius: 1.5rem;
   box-shadow: rgba(149, 157, 165, 0.4) 0 8px 24px;
+  background: white;
 }
 
 .Header-logo {

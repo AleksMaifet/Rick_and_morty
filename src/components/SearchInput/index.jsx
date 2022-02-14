@@ -1,11 +1,11 @@
-import { useCallback, useState } from 'react';
+import {memo, useCallback, useState} from 'react';
 import Button from "../Button";
 import "./index.css";
 
-const SearchInput = ({ onSearch }) => {
+const SearchInput = memo(({ onSearch }) => {
   const [value, setValue] = useState("");
 
-  const onSearchChange = useCallback((e) => setValue(e.target.value), []);
+  const onSearchChange = (e => setValue(e.target.value));
   const onSubmit = useCallback(() => onSearch(value), [value, onSearch]);
 
   return (
@@ -14,6 +14,6 @@ const SearchInput = ({ onSearch }) => {
       <Button onClick={onSubmit}>Submit</Button>
     </div>
   );
-};
+});
 
 export default SearchInput;

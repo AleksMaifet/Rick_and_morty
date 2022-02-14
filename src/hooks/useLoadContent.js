@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 
 const START_PAGE = 0;
+const API = 'https://rickandmortyapi.com/api/character/'
 
 export const useLoadContent = () => {
 	const [imgList, setImgList] = useState([]);
@@ -23,7 +24,7 @@ export const useLoadContent = () => {
 	const getContent = useCallback(async (searchValue) => {
 		if (searchValue) {
 			try {
-				const request = await getData(`${process.env.REACT_APP_THE_RICK_AND_MORTY_BASE_URL}?name=${searchValue}`)
+				const request = await getData(`${API}?name=${searchValue}`)
 				const {results} = request
 				setImgList(results);
 				return
@@ -32,7 +33,7 @@ export const useLoadContent = () => {
 			}
 		}
 		try {
-			const requestNextItems = await getData(`${process.env.REACT_APP_THE_RICK_AND_MORTY_BASE_URL}${changeIdCharacters(page)}`)
+			const requestNextItems = await getData(`${API}${changeIdCharacters(page)}`)
 			setImgList([...imgList, ...requestNextItems])
 		} catch (e) {
 			console.log(e)

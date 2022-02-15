@@ -2,18 +2,20 @@ import {memo, useCallback, useState} from 'react';
 import Button from "../Button";
 import "./index.css";
 
-const SearchInput = memo(({ onSearch }) => {
-  const [value, setValue] = useState("");
+const BUTTON_VALUE = "Submit";
 
-  const onSearchChange = (e => setValue(e.target.value));
-  const onSubmit = useCallback(() => onSearch(value), [value, onSearch]);
+const SearchInput = memo(({onSearch}) => {
+	const [value, setValue] = useState("");
 
-  return (
-    <div className="SearchInput">
-      <input value={value} onChange={onSearchChange} />
-      <Button onClick={onSubmit}>Submit</Button>
-    </div>
-  );
+	const onSearchChange = (e => setValue(e.target.value));
+	const onSubmit = useCallback(() => onSearch(value), [value, onSearch]);
+
+	return (
+		<div className="SearchInput">
+			<input value={value} onChange={onSearchChange}/>
+			<Button onClick={onSubmit}>{BUTTON_VALUE}</Button>
+		</div>
+	);
 });
 
 export default SearchInput;

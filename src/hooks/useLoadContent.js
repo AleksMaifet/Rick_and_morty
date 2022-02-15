@@ -1,7 +1,8 @@
 import {useCallback, useEffect, useState} from "react";
+import {getData, changeIdCharacters} from "../utils";
 
 const START_PAGE = 0;
-const API = 'https://rickandmortyapi.com/api/character/'
+const API = "https://rickandmortyapi.com/api/character/";
 
 export const useLoadContent = () => {
 	const [imgList, setImgList] = useState([]);
@@ -11,15 +12,6 @@ export const useLoadContent = () => {
 		await getContent()
 	}, [page])
 
-	const getData = async (url) => {
-		const res = await fetch(url);
-		return await res.json();
-	};
-
-	const changeIdCharacters = (p) => {
-		const nextItems = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']
-		return nextItems.map(el => `${p + (Number(el[0]))}${el[1]}`)
-	}
 
 	const getContent = useCallback(async (searchValue) => {
 		if (searchValue) {
@@ -39,7 +31,6 @@ export const useLoadContent = () => {
 			console.log(e)
 		}
 	}, [page]);
-
 
 	return [imgList, getContent, setPage];
 };

@@ -8,7 +8,7 @@ const ContentList = memo(({content}) => {
 				{content.map(({id, name, image}) => {
 					return <li className='contentItem' key={id}>
 						<p>{name}</p>
-						<img className='itemImg' alt={'logo'} src={image}/>
+						<img className='itemImg' alt='logo' src={image}/>
 					</li>
 				})}
 			</ul>

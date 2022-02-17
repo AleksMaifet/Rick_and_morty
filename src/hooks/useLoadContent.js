@@ -8,8 +8,10 @@ export const useLoadContent = () => {
 	const [imgList, setImgList] = useState([]);
 	const [page, setPage] = useState(START_PAGE)
 
-	useEffect(async () => {
-		await getContent()
+	useEffect(() => {
+		(async () => {
+			await getContent()
+		})()
 	}, [page])
 
 
